@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: teladoc_dev
+  username: postgres
+  password: admin
+  host: localhost
+  port: 5432
+
+test:
+  <<: *default
+  database: teladoc_test
+  username: postgres
+  password: admin
+  host: localhost
+  port: 5432
+
+production:
+  <<: *default
+  database: teladoc_prod
+  username: dvlopme
+  password: <%= ENV["DVLOPME_DATABASE_PASSWORD"] %>
+
